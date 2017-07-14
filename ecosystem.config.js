@@ -10,7 +10,7 @@ module.exports = {
 	    key: '~/.ssh/mike-server.pem',
 	    ref: 'origin/master',
 	    repo : 'git@github.com:Mizkoeu/server-testing.git',
-	    path : '/home/ubuntu/server/current',
+	    path : '/home/ubuntu/server-testing',
 	    'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js'
 	   }
   }
