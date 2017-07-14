@@ -6,11 +6,11 @@ module.exports = {
     deploy: {
 	production: {
 	    user: 'ubuntu',
-	    host: 'ec2-52-209-166-225.eu-west-1.compute.amazonaws.com',
+	    host: 'ec2-13-58-191-238.us-east-2.compute.amazonaws.com',
 	    key: '~/.ssh/mike-server.pem',
 	    ref: 'origin/master',
 	    repo : 'git@github.com:Mizkoeu/server-testing.git',
-	    path : '/home/ubuntu/server-testing',
+	    path : '/home/ubuntu/server',
 	    'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js'
 	   }
   }
