@@ -1,0 +1,19 @@
+{
+  "name": "server-testing",
+  "version": "1.0.0",
+  "description": "Source code for learning about servers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mizkoeu/server-testing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mizkoeu/server-testing/issues"
+  },
+  "homepage": "https://github.com/Mizkoeu/server-testing#readme"
+}
