@@ -22,7 +22,7 @@ var remoteurl = "mongodb://zoutianh:54Mizkoeuha!@cluster0-shard-00-00-uiery.mong
 
 //Insert to MongoDB function
 var insertDocument = function(db, JSONData, callback) {
-  db.collection('testCollection').insertOne(JSONData);
+  db.collection('playerStats').insert(JSONData);
 };
 
 
@@ -37,8 +37,11 @@ http.createServer(function (request, response) {
       console.log("Node server heard you!!");
       //parse url content
       data = qs.parse(data);
-      var JSONData = JSON.parse(data.JSONData)
-      console.log("Received Data:\n" + data.JSONData);
+
+      var finalStr = '{"name":"Hoang","group":"Grinnell","game":' + data.JSONData + '}';
+
+      var JSONData = JSON.parse(finalStr);
+      //console.log("Received Data:\n" + JSONData);
       // Connect to the db
       MongoClient.connect(remoteurl, function(err, db) {
         if(!err) {
@@ -60,7 +63,7 @@ http.createServer(function (request, response) {
     MongoClient.connect(remoteurl, function(err, db) {
       if (err) throw err;
       //Arbitrary query information (which return all entry in this case)
-      var query = { name: "Mike" };
+      var query = { name: "NewGod" };
       db.collection("playerStats").find(query).toArray(function(err, result) {
         if (err) throw err;
         console.log("Get Response:");
