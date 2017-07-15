@@ -63,7 +63,7 @@ http.createServer(function (request, response) {
     MongoClient.connect(remoteurl, function(err, db) {
       if (err) throw err;
       //Arbitrary query information (which return all entry in this case)
-      var query = { name: "Mike" };
+      var query = { name: "Hoang" };
       db.collection("playerStats").find(query).toArray(function(err, result) {
         if (err) throw err;
         console.log("Get Response:");
