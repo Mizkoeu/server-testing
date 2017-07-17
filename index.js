@@ -9,7 +9,7 @@ var ip = '0.0.0.0';
 // Retrieve
 var MongoClient = require('mongodb').MongoClient;
 // This is the remote url to connect to MongoDB
-var remoteurl = "mongodb://zoutianh:54Mizkoeuha!@cluster0-shard-00-00-uiery.mongodb.net:27017,cluster0-shard-00-01-uiery.mongodb.net:27017,cluster0-shard-00-02-uiery.mongodb.net:27017/Epidemic?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin";
+var remoteurl = "mongodb://zoutianh:f2H6OYbk12AYHSGa@cluster0-shard-00-00-uiery.mongodb.net:27017,cluster0-shard-00-01-uiery.mongodb.net:27017,cluster0-shard-00-02-uiery.mongodb.net:27017/Epidemic?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin";
 
 
 // MongoClient.connect(remoteurl, function(err, db) {
