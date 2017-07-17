@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Mizkoeu/server-testing#readme",
   "devDependencies": {
+    "ejs": "^2.5.6",
     "express": "^4.15.3",
     "pm2": "^2.5.0"
   },
