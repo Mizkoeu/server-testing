@@ -72,6 +72,45 @@ app.get('/profile/:name', function(req, res) {
 
 });
 
+//Insert to MongoDB function
+var insertDocument = function(db, JSONData, callback) {
+  db.collection('playerStats').insert(JSONData);
+};
+
+
+// Start the server
+http.createServer(function (request, response) {
+
+
+  //Handle POST request
+  if (request.method == 'POST') {
+    //Get the post request
+    easypost.get(request, response, function (data) {
+      console.log("Node server heard you!!");
+      //parse url content
+      data = qs.parse(data);
+
+      var finalStr = '{"name":"Hoang","group":"Grinnell","game":' + data.JSONData + '}';
+
+      var JSONData = JSON.parse(finalStr);
+      //console.log("Received Data:\n" + JSONData);
+      // Connect to the db
+      MongoClient.connect(remoteurl, function(err, db) {
+        if(!err) {
+          //call insert function
+          insertDocument(db, JSONData, function() {
+            db.close();
+          });
+        }
+        else {
+          throw err;
+        }
+      });
+      console.log("We are connected");
+    });
+  }
+};
+
 app.listen(3000, '127.0.0.1');
 
 // var input = fs.createReadStream(__dirname + '/public/index.html', 'utf8');
