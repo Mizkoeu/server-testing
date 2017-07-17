@@ -42,9 +42,8 @@ http.createServer(function (request, response) {
       MongoClient.connect(remoteurl, function(err, db) {
         if(!err) {
           db.collection("playerStats").count({"name": "Hoang"}, function(err, ret) {
-            console.log(ret);
-            var finalStr = '{"name":"Hoang","numGame":' + ret + ',"group":"Grinnell","game":' + data.JSONData + '}';
-            console.log(finalStr);
+            var gameNum = ret + 1;
+            var finalStr = '{"name":"Hoang","numGame":' + gameNum + ',"group":"Grinnell","game":' + data.JSONData + '}';
             var JSONData = JSON.parse(finalStr);
             //call insert function
             insertDocument(db, JSONData, function() {
