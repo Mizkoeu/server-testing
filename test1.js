@@ -1,7 +1,11 @@
 var http = require('http');
 var fs = require('fs');
+var easypost = require('easypost');
+var qs = require('querystring');
 var express = require('express');
 var app = express();
+var port = 3000;
+var ip = '127.0.0.1';
 
 // Retrieve
 var MongoClient = require('mongodb').MongoClient;
@@ -109,7 +113,7 @@ http.createServer(function (request, response) {
       console.log("We are connected");
     });
   }
-});
+}).listen(port, ip);
 
 app.listen(3000, '127.0.0.1');
 
