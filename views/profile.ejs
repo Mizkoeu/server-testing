@@ -6,16 +6,48 @@
     body{background: skyblue; font-family: verdana; color: #fff; padding: 30px;}
     h1{font-size: 48px; text-transform: uppercase; letter-spacing: 2px; text-align: center;}
     p{font-size: 16px; text-align: center; word-wrap: break-word;}
+    div.catalog {
+      width: 100%;
+      position: fixed;
+      z-index: 1;
+    }
+    .catalog a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 10px 10px;
+        text-decoration: none;
+        display: inline;
+        float: left;
+        margin-left: 5%;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: auto;
+      padding: 0 10%;
+      overflow: hidden;
+      background-color: #333;
+      width: 100%;
+      position: fixed;
+      left: -10px;
+      top: -2px;
+    }
+
+    li a:hover {
+        background-color: #111;
+    }
   </style>
 </head>
 <body id="hey">
+  <% include partials/nav.ejs %>
   <h1>here's your game data, <%=person%>! </h1>
   <p>You will love this</p>
   <p><strong>Name: </strong><%=data.name%></p>
   <p><strong>Group: </strong><%=data.group%></p>
   <p><strong>Game: </strong></p>
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     var allData = <%-JSON.stringify(data.game)%>;
     console.log(allData[0]);
     for (var i=0;i<allData.length;i++) {
@@ -28,7 +60,10 @@
       var element = document.getElementById("hey");
       element.appendChild(para);
     }
-  </script>
+  </script> -->
+  <% data.game.forEach(function(item){ %>
+    <p><%- JSON.stringify(item) %></p>
+  <% }); %>
 
 </body>
 </html>

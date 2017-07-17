@@ -45,9 +45,29 @@ app.get('/profile/:name', function(req, res) {
       });
   };
 
+  var connect2 = function(db, callback) {
+      var query = { name: "Mike"};
+      db.collection("playerStats").find(query).toArray(function(err, arr) {
+        if (err) throw err;
+        //console.log(arr[0]);
+        if (arr.length <= 1) {
+          res.send('404, Not enough games found for you');
+        } else {
+          var data = arr[1];
+          console.log(data.name);
+          callback(data);
+          db.close();
+        }
+      });
+  };
+
   MongoClient.connect(remoteurl, function(err, db) {
     if (err) throw err;
+    if (req.params.name === 'Mike2') {
+      connect2(db, useData);
+    } else {
     connect(db, useData);
+    }
   });
 
 });
