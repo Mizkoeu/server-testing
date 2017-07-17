@@ -3,7 +3,7 @@ var fs = require('fs');
 var ndjson = require('ndjson');
 var easypost = require('easypost');
 var qs = require('querystring');
-var port = 3000;
+var port = 3100;
 var ip = '127.0.0.1';
 
 // Retrieve
