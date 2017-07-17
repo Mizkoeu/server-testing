@@ -41,7 +41,7 @@ app.get('/profile/:name', function(req, res) {
         if (arr.length === 0) {
           res.send('404, Wrong page');
         } else {
-          var data = arr[0];
+          var data = arr[arr.length - 1];
           console.log(data.name);
           callback(data, arr.length);
           db.close();
