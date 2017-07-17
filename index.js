@@ -3,8 +3,8 @@ var fs = require('fs');
 var ndjson = require('ndjson');
 var easypost = require('easypost');
 var qs = require('querystring');
-var port = 3100;
-var ip = '127.0.0.1';
+var port = 27017;
+var ip = '0.0.0.0';
 
 // Retrieve
 var MongoClient = require('mongodb').MongoClient;
