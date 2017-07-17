@@ -3,7 +3,7 @@ var fs = require('fs');
 var ndjson = require('ndjson');
 var easypost = require('easypost');
 var qs = require('querystring');
-var port = 3000;
+var port = 3100;
 var ip = '127.0.0.1';
 
 // Retrieve
@@ -29,7 +29,6 @@ var insertDocument = function(db, JSONData, callback) {
 // Start the server
 http.createServer(function (request, response) {
 
-
   //Handle POST request
   if (request.method == 'POST') {
     //Get the post request
@@ -38,13 +37,16 @@ http.createServer(function (request, response) {
       //parse url content
       data = qs.parse(data);
 
-      var finalStr = '{"name":"Hoang","group":"Grinnell","game":' + data.JSONData + '}';
 
-      var JSONData = JSON.parse(finalStr);
+
+
       //console.log("Received Data:\n" + JSONData);
       // Connect to the db
       MongoClient.connect(remoteurl, function(err, db) {
         if(!err) {
+          var numGame = db.collection("playerStats").find({name: "Hoang"}).count();
+          var finalStr = '{"name":"Hoang", numGame: ' + numGame + ', "group":"Grinnell","game":' + data.JSONData + '}';
+          var JSONData = JSON.parse(finalStr);
           //call insert function
           insertDocument(db, JSONData, function() {
             db.close();
@@ -58,7 +60,7 @@ http.createServer(function (request, response) {
     });
 
   //Handle Get request
-  } 
+  }
 
 }).listen(port, ip);
 
