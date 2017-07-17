@@ -58,22 +58,7 @@ http.createServer(function (request, response) {
     });
 
   //Handle Get request
-  } else if (request.method == 'GET') {
-    //Connect to the MongoBD
-    MongoClient.connect(remoteurl, function(err, db) {
-      if (err) throw err;
-      //Arbitrary query information (which return all entry in this case)
-      var query = { name: "Hoang" };
-      db.collection("playerStats").find(query).toArray(function(err, result) {
-        if (err) throw err;
-        console.log("Get Response:");
-        console.log(result);
-        //respond with the query result
-        response.end(JSON.stringify(result));
-        db.close();
-      });
-    });
-  }
+  } 
 
 }).listen(port, ip);
 
