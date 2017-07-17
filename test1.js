@@ -24,9 +24,9 @@ app.get('/about.html', function(req, res) {
 });
 
 app.get('/profile/:name', function(req, res) {
-  var useData = function(data) {
+  var useData = function(data, len) {
     //console.log(data);
-    res.render('profile', {person: req.params.name, data: data});
+    res.render('profile', {person: req.params.name, length: len, data: data});
   };
 
   var connect = function(db, callback) {
@@ -39,7 +39,7 @@ app.get('/profile/:name', function(req, res) {
         } else {
           var data = arr[0];
           console.log(data.name);
-          callback(data);
+          callback(data, arr.length);
           db.close();
         }
       });
@@ -55,7 +55,7 @@ app.get('/profile/:name', function(req, res) {
         } else {
           var data = arr[1];
           console.log(data.name);
-          callback(data);
+          callback(data, arr.length);
           db.close();
         }
       });

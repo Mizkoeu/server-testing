@@ -41,11 +41,17 @@
 </head>
 <body id="hey">
   <% include partials/nav.ejs %>
-  <h1>here's your game data, <%=person%>! </h1>
+  <h1>here's your game data, <%=data.name%>! </h1>
   <p>You will love this</p>
+
   <p><strong>Name: </strong><%=data.name%></p>
+  <p><strong>Number of Games Played: </strong><%=length%></p>
   <p><strong>Group: </strong><%=data.group%></p>
-  <p><strong>Game: </strong></p>
+  <% if (person.indexOf('2') !== -1) { %>
+    <p><strong>Displaying Game 2 of <%=data.name%>: </strong></p>
+  <% } else { %>
+    <p><strong>Displaying 1st Game of <%=data.name%>: </strong></p>
+  <% } %>
 
   <!-- <script type="text/javascript">
     var allData = <%-JSON.stringify(data.game)%>;
