@@ -19,9 +19,12 @@ app.get(['/', '/index.html'], function(req, res) {
   res.sendFile(__dirname + '/public/index.html');
 });
 
-app.get('/style.css', function(req, res) {
-  res.sendFile(__dirname + '/public/style.css');
-});
+// app.get('/style.css', function(req, res) {
+//   res.sendFile(__dirname + '/public/style.css');
+// });
+
+//Middleware testing
+app.use('/assets', express.static('assets'));
 
 app.get('/about.html', function(req, res) {
   res.sendFile(__dirname + '/public/about.html');
